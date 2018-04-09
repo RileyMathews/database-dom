@@ -6,4 +6,30 @@ const loadDatabase = function (localStorageKey) {
     // Use JSON.parse() to convert the string back into an object
     return JSON.parse(databaseString)
 }
-loadDatabase("inventory")
+const homeInventoryDatabase = loadDatabase("inventory")
+
+
+//create variable ref for article tag
+const article = document.querySelector("#myStuff")
+
+//loop through the top level database object, returning arrays as array
+for (array in homeInventoryDatabase) {
+    //loop through the arrays, returning objects as i
+    for (let i = 0; i < homeInventoryDatabase[array].length; i++) {
+        //create a section tag to hold information in the current array
+        const section = document.createElement("section")
+        //loop through the objects, returning values as property
+        for (property in homeInventoryDatabase[array][i]) {
+            //creates p element
+            let p = document.createElement("p")
+            //creates text node with the current property 
+            let text = document.createTextNode(homeInventoryDatabase[array][i][property])
+            //appends text to p
+            p.appendChild(text)
+            //appends p to section
+            section.appendChild(p)
+        }
+        //appends section to article
+        article.appendChild(section)
+    }
+}
