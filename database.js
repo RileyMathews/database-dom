@@ -24,10 +24,8 @@ const print = filter => {
                 for (property in homeInventoryDatabase[array][i]) {
                     //creates p element
                     let p = document.createElement("p")
-                    //creates text node with the current property 
-                    let text = document.createTextNode(homeInventoryDatabase[array][i][property])
-                    //appends text to p
-                    p.appendChild(text)
+                    //adds text content to the element p 
+                    p.textContent = homeInventoryDatabase[array][i][property]
                     //appends p to section
                     section.appendChild(p)
                 }
