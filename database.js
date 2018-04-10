@@ -13,19 +13,26 @@ const homeInventoryDatabase = loadDatabase("inventory")
 const article = document.querySelector("#myStuff")
 
 const print = filter => {
+
     //loop through the top level database object, returning arrays as array
     for (array in homeInventoryDatabase) {
         if (array === filter) {
+
             //loop through the arrays, returning objects as i
             for (let i = 0; i < homeInventoryDatabase[array].length; i++) {
+
                 //create a section tag to hold information in the current array
                 const section = document.createElement("section")
+
                 //loop through the objects, returning values as property
                 for (property in homeInventoryDatabase[array][i]) {
+
                     //creates p element
                     let p = document.createElement("p")
+
                     //adds text content to the element p 
                     p.textContent = homeInventoryDatabase[array][i][property]
+                    
                     //appends p to section
                     section.appendChild(p)
                 }
